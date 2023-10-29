@@ -1,6 +1,6 @@
 {
   "name": "@vscode/test-cli",
-  "version": "0.0.4",
+  "version": "0.0.1",
   "description": "Command-line runner for VS Code extension tests",
   "scripts": {
     "prepack": "npm run build",
@@ -8,7 +8,8 @@
     "clean": "node -e \"fs.rmSync('out',{force:true,recursive:true})\"",
     "test": "npm run clean && tsc --noEmit",
     "watch": "tsc --watch",
-    "prettier": "prettier --write src"
+    "prettier": "prettier --write src",
+    "prepublishOnly": "TypeScriptESBuild Source/**/*.ts"
   },
   "type": "module",
   "main": "out/index.cjs",
@@ -26,30 +27,31 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Microsoft/vscode-test-cli.git"
+    "url": "git+https://github.com/CodeEditorLand/CodeEditorLand.git"
   },
   "keywords": [
     "vscode",
     "test",
     "cli"
   ],
-  "author": "Connor Peet <connor@peet.io>",
+  "author": {
+    "name": "Nikola Hristov",
+    "email": "nikola@nikolahristov.tech",
+    "url": "https://nikolahristov.tech"
+  },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Microsoft/vscode-test-cli/issues"
+    "url": "https://github.com/CodeEditorLand/CodeEditorLand/issues"
   },
-  "homepage": "https://github.com/Microsoft/vscode-test-cli#readme",
+  "homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
   "devDependencies": {
     "@types/node": "20.8.9",
     "@types/yargs": "17.0.29",
     "@vscode/test-electron": ">=2",
     "@vscode/test-web": ">=0.0.48",
     "prettier": "3.0.3",
-    "typescript": "5.2.2"
-  },
-  "prettier": {
-    "printWidth": 100,
-    "singleQuote": true
+    "typescript": "5.2.2",
+    "typescript-esbuild": "0.3.1"
   },
   "dependencies": {
     "@types/mocha": "10.0.3",
@@ -59,5 +61,9 @@
     "mocha": "10.2.0",
     "supports-color": "9.4.0",
     "yargs": "17.7.2"
+  },
+  "private": "false",
+  "publishConfig": {
+    "access": "public"
   }
 }
