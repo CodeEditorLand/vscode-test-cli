@@ -40,11 +40,11 @@
   },
   "homepage": "https://github.com/Microsoft/vscode-test-cli#readme",
   "devDependencies": {
-    "@types/node": "^18.18.4",
-    "@types/yargs": "^17.0.28",
+    "@types/node": "^20.9.1",
+    "@types/yargs": "^17.0.31",
     "@vscode/test-electron": ">=2",
-    "@vscode/test-web": ">=0.0.46",
-    "prettier": "^3.0.3",
+    "@vscode/test-web": ">=0.0.48",
+    "prettier": "^3.1.0",
     "typescript": "^5.2.2"
   },
   "prettier": {
@@ -52,7 +52,7 @@
     "singleQuote": true
   },
   "dependencies": {
-    "@types/mocha": "^10.0.2",
+    "@types/mocha": "^10.0.4",
     "chokidar": "^3.5.3",
     "glob": "^10.3.10",
     "minimatch": "^9.0.3",
