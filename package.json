@@ -28,11 +28,6 @@
     "type": "git",
     "url": "git+https://github.com/Microsoft/vscode-test-cli.git"
   },
-  "keywords": [
-    "vscode",
-    "test",
-    "cli"
-  ],
   "author": "Connor Peet <connor@peet.io>",
   "license": "MIT",
   "bugs": {
@@ -44,12 +39,7 @@
     "@types/yargs": "17.0.28",
     "@vscode/test-electron": ">=2",
     "@vscode/test-web": ">=0.0.46",
-    "prettier": "3.0.3",
     "typescript": "5.2.2"
-  },
-  "prettier": {
-    "printWidth": 100,
-    "singleQuote": true
   },
   "dependencies": {
     "@types/mocha": "10.0.2",
