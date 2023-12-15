@@ -2,7 +2,7 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  *--------------------------------------------------------*/
 
-import Mocha from 'mocha';
+import Mocha from "mocha";
 
 export async function run() {
 	const {
@@ -19,7 +19,7 @@ export async function run() {
 
 	// Create the mocha test
 	const mocha = new Mocha({
-		ui: 'tdd',
+		ui: "tdd",
 		color: colorDefault,
 		...mochaOpts,
 	});
@@ -34,7 +34,13 @@ export async function run() {
 
 	await new Promise<void>((resolve, reject) =>
 		mocha.run((failures) =>
-			failures ? reject(failures > 1 ? `${failures} tests failed.` : `${failures} test failed.`) : resolve()
-		)
+			failures
+				? reject(
+						failures > 1
+							? `${failures} tests failed.`
+							: `${failures} test failed.`,
+				  )
+				: resolve(),
+		),
 	);
 }
