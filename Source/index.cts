@@ -13,5 +13,5 @@ type AnyConfiguration = TestConfiguration | TestConfiguration[];
 type AnyConfigurationOrPromise = AnyConfiguration | Promise<AnyConfiguration>;
 
 export const defineConfig = (
-	config: AnyConfigurationOrPromise | (() => AnyConfigurationOrPromise)
+	config: AnyConfigurationOrPromise | (() => AnyConfigurationOrPromise),
 ) => config;

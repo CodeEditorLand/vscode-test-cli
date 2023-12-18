@@ -4,14 +4,14 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  *--------------------------------------------------------*/
 
-import * as chokidar from "chokidar";
 import { existsSync, promises as fs } from "fs";
-import { glob } from "glob";
-import { minimatch } from "minimatch";
 import { cpus } from "os";
 import { dirname, isAbsolute, join, resolve } from "path";
-import supportsColor from "supports-color";
 import { fileURLToPath, pathToFileURL } from "url";
+import * as chokidar from "chokidar";
+import { glob } from "glob";
+import { minimatch } from "minimatch";
+import supportsColor from "supports-color";
 import yargs from "yargs";
 import { IDesktopTestConfiguration, TestConfiguration } from "./config.cjs";
 
@@ -24,7 +24,7 @@ const configFileDefault = "nearest .vscode-test.js";
 
 const args = yargs(process.argv)
 	.epilogue(
-		"See https://code.visualstudio.com/api/working-with-extensions/testing-extension for help"
+		"See https://code.visualstudio.com/api/working-with-extensions/testing-extension for help",
 	)
 	.option("config", {
 		type: "string",
@@ -210,7 +210,7 @@ type ConfigOrArray = TestConfiguration | TestConfiguration[];
 
 const configFileRules: {
 	[ext: string]: (
-		path: string
+		path: string,
 	) => Promise<ConfigOrArray | Promise<ConfigOrArray>>;
 } = {
 	json: (path: string) => fs.readFile(path, "utf8").then(JSON.parse),
@@ -241,11 +241,11 @@ async function main() {
 				const found = configs.find((c, i) =>
 					typeof label === "string"
 						? c.config.label === label
-						: i === label
+						: i === label,
 				);
 				if (!found) {
 					throw new CliExpectedError(
-						`Could not find a configuration with label "${label}"`
+						`Could not find a configuration with label "${label}"`,
 					);
 				}
 				return found;
@@ -303,7 +303,7 @@ async function watchConfigs(configs: readonly IConfigWithPath[]) {
 				...(args.watchIgnore || []).map(String),
 			],
 			ignoreInitial: true,
-		}
+		},
 	);
 
 	watcher.on("all", (evts) => {
@@ -326,13 +326,13 @@ async function watchConfigs(configs: readonly IConfigWithPath[]) {
 }
 
 const isDesktop = (
-	config: TestConfiguration
+	config: TestConfiguration,
 ): config is IDesktopTestConfiguration =>
 	!config.platform || config.platform === "desktop";
 
 const RUNNER_PATH = join(
 	fileURLToPath(new URL(".", import.meta.url)),
-	"runner.cjs"
+	"runner.cjs",
 );
 
 /** Runs the given test configurations. */
@@ -348,7 +348,7 @@ async function runConfigs(configs: readonly IConfigWithPath[]) {
 				c.config.launchArgs ||= [];
 				if (c.config.workspaceFolder) {
 					c.config.launchArgs.push(
-						resolve(dirname(c.path), c.config.workspaceFolder)
+						resolve(dirname(c.path), c.config.workspaceFolder),
 					);
 				}
 				env.VSCODE_TEST_OPTIONS = JSON.stringify({
@@ -364,7 +364,7 @@ async function runConfigs(configs: readonly IConfigWithPath[]) {
 						...(args.file?.map((f) =>
 							require.resolve(String(f), {
 								paths: [process.cwd()],
-							})
+							}),
 						) || []),
 					],
 					files,
@@ -379,7 +379,7 @@ async function runConfigs(configs: readonly IConfigWithPath[]) {
 					c.config.extensionDevelopmentPath?.slice() ||
 					dirname(c.path),
 			};
-		})
+		}),
 	);
 	if (args.listConfiguration) {
 		console.log(JSON.stringify(resolvedConfigs, null, 2));
@@ -394,7 +394,7 @@ async function runConfigs(configs: readonly IConfigWithPath[]) {
 				electron = await import("@vscode/test-electron");
 			} catch (e) {
 				throw new CliExpectedError(
-					'@vscode/test-electron not found, you may need to install it ("npm install -D @vscode/test-electron")'
+					'@vscode/test-electron not found, you may need to install it ("npm install -D @vscode/test-electron")',
 				);
 			}
 
@@ -451,8 +451,8 @@ async function gatherFiles({ config, path }: IConfigWithPath) {
 		} else {
 			fileListsProms.push(
 				glob(file, { cwd, ignore: ignoreGlobs }).then((l) =>
-					l.map((f) => join(cwd, f))
-				)
+					l.map((f) => join(cwd, f)),
+				),
 			);
 		}
 	}
@@ -468,8 +468,8 @@ async function tryLoadConfigFile(path: string) {
 	if (!configFileRules.hasOwnProperty(ext)) {
 		throw new CliExpectedError(
 			`I don't know how to load the extension '${ext}'. We can load: ${Object.keys(
-				configFileRules
-			).join(", ")}`
+				configFileRules,
+			).join(", ")}`,
 		);
 	}
 
@@ -488,7 +488,7 @@ async function tryLoadConfigFile(path: string) {
 		}));
 	} catch (e) {
 		throw new CliExpectedError(
-			`Could not read config file ${path}: ${(e as Error).stack || e}`
+			`Could not read config file ${path}: ${(e as Error).stack || e}`,
 		);
 	}
 }
@@ -515,6 +515,6 @@ async function loadDefaultConfigFile() {
 	}
 
 	throw new CliExpectedError(
-		`Could not find a ${base} file in this directory or any parent. You can specify one with the --config option.`
+		`Could not find a ${base} file in this directory or any parent. You can specify one with the --config option.`,
 	);
 }

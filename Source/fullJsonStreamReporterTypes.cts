@@ -33,7 +33,7 @@ export interface IFailEvent extends IPassEvent {
 	actual?: string;
 }
 
-export interface IEndEvent {}
+export type IEndEvent = {};
 
 export interface ISuiteStartEvent {
 	path: string[];
