@@ -38,9 +38,9 @@ export async function run() {
 				? reject(
 						failures > 1
 							? `${failures} tests failed.`
-							: `${failures} test failed.`,
-				  )
-				: resolve(),
-		),
+							: `${failures} test failed.`
+					)
+				: resolve()
+		)
 	);
 }
