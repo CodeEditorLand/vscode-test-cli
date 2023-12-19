@@ -55,7 +55,7 @@ module.exports = class FullJsonStreamReporter {
 };
 
 function writeEvent(event: MochaEventTuple) {
-	process.stdout.write(JSON.stringify(event) + "\n");
+	process.stdout.write(`${JSON.stringify(event)}\n`);
 }
 
 const clean = (test: Mocha.Test) => {

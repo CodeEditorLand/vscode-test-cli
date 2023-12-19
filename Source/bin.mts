@@ -441,7 +441,7 @@ async function gatherFiles({ config, path }: IConfigWithPath) {
 	const fileListsProms: (string[] | Promise<string[]>)[] = [];
 	const cwd = dirname(path);
 	const ignoreGlobs = args.ignore?.map(String).filter((p) => !isAbsolute(p));
-	for (const file of config.files instanceof Array
+	for (const file of Array.isArray(config.files)
 		? config.files
 		: [config.files]) {
 		if (isAbsolute(file)) {
