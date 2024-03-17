@@ -1,18 +1,30 @@
 {
-  "name": "@vscode/test-cli",
-  "version": "0.0.8",
-  "description": "Command-line runner for VS Code extension tests",
-  "homepage": "https://github.com/Microsoft/vscode-test-cli#readme",
+  "author": "Connor Peet <connor@peet.io>",
+  "bin": {
+    "vscode-test": "./out/bin.mjs"
+  },
   "bugs": {
     "url": "https://github.com/Microsoft/vscode-test-cli/issues"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Microsoft/vscode-test-cli.git"
+  "dependencies": {
+    "@types/mocha": "10.0.2",
+    "c8": "9.1.0",
+    "chokidar": "3.5.3",
+    "enhanced-resolve": "5.15.0",
+    "glob": "10.3.10",
+    "minimatch": "9.0.3",
+    "mocha": "10.2.0",
+    "supports-color": "9.4.0",
+    "yargs": "17.7.2"
   },
-  "license": "MIT",
-  "author": "Connor Peet <connor@peet.io>",
-  "type": "module",
+  "description": "Command-line runner for VS Code extension tests",
+  "devDependencies": {
+    "@types/node": "18.18.4",
+    "@types/yargs": "17.0.28",
+    "@vscode/test-electron": ">=2",
+    "@vscode/test-web": ">=0.0.46",
+    "typescript": "5.4.0-beta"
+  },
   "exports": {
     ".": {
       "import": "./out/index.mjs",
@@ -22,9 +34,13 @@
       "require": "./out/fullJsonStreamReporter.cjs"
     }
   },
+  "homepage": "https://github.com/Microsoft/vscode-test-cli#readme",
+  "license": "MIT",
   "main": "out/index.cjs",
-  "bin": {
-    "vscode-test": "./out/bin.mjs"
+  "name": "@vscode/test-cli",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Microsoft/vscode-test-cli.git"
   },
   "scripts": {
     "build": "npm run clean && tsc",
@@ -34,22 +50,6 @@
     "prettier": "prettier --write src",
     "watch": "tsc --watch"
   },
-  "dependencies": {
-    "@types/mocha": "^10.0.2",
-    "c8": "^9.1.0",
-    "chokidar": "^3.5.3",
-    "enhanced-resolve": "^5.15.0",
-    "glob": "^10.3.10",
-    "minimatch": "^9.0.3",
-    "mocha": "^10.2.0",
-    "supports-color": "^9.4.0",
-    "yargs": "^17.7.2"
-  },
-  "devDependencies": {
-    "@types/node": "^18.18.4",
-    "@types/yargs": "^17.0.28",
-    "@vscode/test-electron": ">=2",
-    "@vscode/test-web": ">=0.0.46",
-    "typescript": "^5.4.0-beta"
-  }
+  "type": "module",
+  "version": "0.0.8"
 }
