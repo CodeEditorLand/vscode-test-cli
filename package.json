@@ -1,10 +1,38 @@
 {
+  "name": "@vscode/test-cli",
+  "version": "0.0.8",
+  "description": "Command-line runner for VS Code extension tests",
+  "homepage": "https://github.com/Microsoft/vscode-test-cli#readme",
+  "bugs": {
+    "url": "https://github.com/Microsoft/vscode-test-cli/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Microsoft/vscode-test-cli.git"
+  },
+  "license": "MIT",
   "author": "Connor Peet <connor@peet.io>",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./out/index.mjs",
+      "require": "./out/index.cjs"
+    },
+    "./fullJsonStream": {
+      "require": "./out/fullJsonStreamReporter.cjs"
+    }
+  },
+  "main": "out/index.cjs",
   "bin": {
     "vscode-test": "./out/bin.mjs"
   },
-  "bugs": {
-    "url": "https://github.com/Microsoft/vscode-test-cli/issues"
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "clean": "node -e \"fs.rmSync('out',{force:true,recursive:true})\"",
+    "fmt": "prettier --write \"src/**/*.{mts,cts}\" \"*.md\"",
+    "prepack": "npm run build",
+    "prettier": "prettier --write src",
+    "watch": "tsc --watch"
   },
   "dependencies": {
     "@types/mocha": "10.0.2",
@@ -17,39 +45,11 @@
     "supports-color": "9.4.0",
     "yargs": "17.7.2"
   },
-  "description": "Command-line runner for VS Code extension tests",
   "devDependencies": {
     "@types/node": "18.18.4",
     "@types/yargs": "17.0.28",
     "@vscode/test-electron": ">=2",
     "@vscode/test-web": ">=0.0.46",
     "typescript": "5.4.0-beta"
-  },
-  "exports": {
-    ".": {
-      "import": "./out/index.mjs",
-      "require": "./out/index.cjs"
-    },
-    "./fullJsonStream": {
-      "require": "./out/fullJsonStreamReporter.cjs"
-    }
-  },
-  "homepage": "https://github.com/Microsoft/vscode-test-cli#readme",
-  "license": "MIT",
-  "main": "out/index.cjs",
-  "name": "@vscode/test-cli",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Microsoft/vscode-test-cli.git"
-  },
-  "scripts": {
-    "build": "npm run clean && tsc",
-    "clean": "node -e \"fs.rmSync('out',{force:true,recursive:true})\"",
-    "fmt": "prettier --write \"src/**/*.{mts,cts}\" \"*.md\"",
-    "prepack": "npm run build",
-    "prettier": "prettier --write src",
-    "watch": "tsc --watch"
-  },
-  "type": "module",
-  "version": "0.0.8"
+  }
 }
