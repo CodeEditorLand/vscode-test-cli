@@ -41,7 +41,7 @@
   },
   "homepage": "https://github.com/Microsoft/vscode-test-cli#readme",
   "devDependencies": {
-    "@types/node": "20.11.28",
+    "@types/node": "20.11.30",
     "@types/yargs": "17.0.32",
     "@vscode/test-electron": ">=2",
     "@vscode/test-web": ">=0.0.52",
