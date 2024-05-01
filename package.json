@@ -1,14 +1,45 @@
 {
+	"name": "@vscode/test-cli",
+	"version": "0.0.1",
+	"private": false,
+	"description": "Command-line runner for VS Code extension tests",
+	"keywords": [
+		"land"
+	],
+	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/LandTestCli#readme",
+	"bugs": {
+		"url": "HTTPS://GitHub.Com/CodeEditorLand/LandTestCli/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+HTTPS://github.com/CodeEditorLand/LandTestCli.git"
+	},
+	"license": "SEE LICENSE IN LICENSE",
 	"author": {
-		"email": "Land@PlayForm.Cloud",
 		"name": "🌆 — Land —",
+		"email": "Land@PlayForm.Cloud",
 		"url": "HTTPS://Land.PlayForm.Cloud"
 	},
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./out/index.mjs",
+			"require": "./out/index.cjs"
+		},
+		"./fullJsonStream": {
+			"require": "./out/fullJsonStreamReporter.cjs"
+		}
+	},
+	"main": "out/index.cjs",
 	"bin": {
 		"vscode-test": "./out/bin.mjs"
 	},
-	"bugs": {
-		"url": "HTTPS://GitHub.Com/CodeEditorLand/LandTestCli/issues"
+	"scripts": {
+		"Document": "Document 'Source/**/*.ts'",
+		"build": "npm run clean && tsc",
+		"clean": "node -e \"fs.rmSync('out',{force:true,recursive:true})\"",
+		"prepack": "npm run build",
+		"prepublishOnly": "Build 'Source/**/*.ts'"
 	},
 	"dependencies": {
 		"c8": "9.1.0",
@@ -19,44 +50,13 @@
 		"supports-color": "9.4.0",
 		"yargs": "17.7.2"
 	},
-	"description": "Command-line runner for VS Code extension tests",
 	"devDependencies": {
 		"@playform/build": "0.0.7",
 		"@playform/document": "0.0.6",
 		"@types/node": "20.12.7",
 		"@types/yargs": "17.0.32"
 	},
-	"exports": {
-		".": {
-			"import": "./out/index.mjs",
-			"require": "./out/index.cjs"
-		},
-		"./fullJsonStream": {
-			"require": "./out/fullJsonStreamReporter.cjs"
-		}
-	},
-	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/LandTestCli#readme",
-	"keywords": [
-		"land"
-	],
-	"license": "SEE LICENSE IN LICENSE",
-	"main": "out/index.cjs",
-	"name": "@vscode/test-cli",
-	"private": false,
 	"publishConfig": {
 		"access": "public"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+HTTPS://github.com/CodeEditorLand/LandTestCli.git"
-	},
-	"scripts": {
-		"Document": "Document 'Source/**/*.ts'",
-		"build": "npm run clean && tsc",
-		"clean": "node -e \"fs.rmSync('out',{force:true,recursive:true})\"",
-		"prepack": "npm run build",
-		"prepublishOnly": "Build 'Source/**/*.ts'"
-	},
-	"type": "module",
-	"version": "0.0.1"
+	}
 }
