@@ -42,19 +42,19 @@
 		"prepublishOnly": "Build 'Source/**/*.ts'"
 	},
 	"dependencies": {
-		"c8": "^9.1.0",
-		"chokidar": "^3.5.3",
-		"enhanced-resolve": "^5.15.0",
-		"glob": "^10.3.10",
-		"minimatch": "^9.0.3",
-		"supports-color": "^9.4.0",
-		"yargs": "^17.7.2"
+		"c8": "9.1.0",
+		"chokidar": "3.6.0",
+		"enhanced-resolve": "5.16.0",
+		"glob": "10.3.12",
+		"minimatch": "9.0.4",
+		"supports-color": "9.4.0",
+		"yargs": "17.7.2"
 	},
 	"devDependencies": {
 		"@playform/build": "0.0.7",
 		"@playform/document": "0.0.6",
-		"@types/node": "^18.18.4",
-		"@types/yargs": "^17.0.28"
+		"@types/node": "20.12.7",
+		"@types/yargs": "17.0.32"
 	},
 	"publishConfig": {
 		"access": "public"
