@@ -17,7 +17,7 @@ import { ensureArray, readJSON } from '../util.mjs';
 import { IPlatform, IPrepareContext, IPreparedRun, IRunContext } from './index.mjs';
 
 export class DesktopPlatform implements IPlatform {
-  
+  /** @inheritdoc */
   public async prepare({
     args,
     config,
@@ -82,7 +82,7 @@ class PreparedDesktopRun implements IPreparedRun {
     return electron;
   }
 
-  
+  /** @inheritdoc */
   public async run({ coverage }: IRunContext): Promise<number> {
     // note: we do this here rather than in prepare() so that UI integration can
     // work and show tests even if @vscode/test-electron isn't installed yet.
@@ -100,7 +100,7 @@ class PreparedDesktopRun implements IPreparedRun {
     });
   }
 
-  
+  /** @inheritdoc */
   public dumpJson(): object {
     return {
       path: this.config.path,
