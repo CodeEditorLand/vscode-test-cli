@@ -23,7 +23,7 @@
 		"c8": "9.1.0",
 		"chokidar": "3.6.0",
 		"enhanced-resolve": "5.16.1",
-		"glob": "10.3.15",
+		"glob": "10.3.16",
 		"minimatch": "9.0.4",
 		"supports-color": "9.4.0",
 		"yargs": "17.7.2"
