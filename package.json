@@ -3,7 +3,7 @@
 		"vscode-test": "./out/bin.mjs"
 	},
 	"dependencies": {
-		"c8": "^9.1.0",
+		"c8": "^10.0.0",
 		"chokidar": "^3.6.0",
 		"enhanced-resolve": "^5.17.0",
 		"glob": "^10.4.1",
