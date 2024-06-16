@@ -20,16 +20,16 @@
 		"prepack": "npm run build"
 	},
 	"dependencies": {
-		"c8": "^9.1.0",
-		"chokidar": "^3.5.3",
-		"enhanced-resolve": "^5.15.0",
-		"glob": "^10.3.10",
-		"minimatch": "^9.0.3",
+		"c8": "^10.1.2",
+		"chokidar": "^3.6.0",
+		"enhanced-resolve": "^5.17.0",
+		"glob": "^10.4.1",
+		"minimatch": "^9.0.4",
 		"supports-color": "^9.4.0",
 		"yargs": "^17.7.2"
 	},
 	"devDependencies": {
-		"@types/node": "^18.18.4",
-		"@types/yargs": "^17.0.28"
+		"@types/node": "^20.14.2",
+		"@types/yargs": "^17.0.32"
 	}
 }
