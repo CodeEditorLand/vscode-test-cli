@@ -23,13 +23,13 @@
 		"c8": "10.1.2",
 		"chokidar": "3.6.0",
 		"enhanced-resolve": "5.17.0",
-		"glob": "10.4.1",
-		"minimatch": "9.0.4",
+		"glob": "10.4.2",
+		"minimatch": "9.0.5",
 		"supports-color": "9.4.0",
 		"yargs": "17.7.2"
 	},
 	"devDependencies": {
-		"@types/node": "20.14.5",
+		"@types/node": "20.14.9",
 		"@types/yargs": "17.0.32"
 	}
 }
