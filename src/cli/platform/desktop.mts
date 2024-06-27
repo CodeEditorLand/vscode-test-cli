@@ -92,12 +92,26 @@ class PreparedDesktopRun implements IPreparedRun {
     const env = this.env;
     env.NODE_V8_COVERAGE = coverage;
 
-    return electron.runTests({
-      ...this.baseCliOptions(),
-      extensionDevelopmentPath: this.extensionDevelopmentPath,
-      extensionTestsPath: this.extensionTestsPath,
-      extensionTestsEnv: env,
-    });
+    try {
+      return await electron.runTests({
+        ...this.baseCliOptions(),
+        extensionDevelopmentPath: this.extensionDevelopmentPath,
+        extensionTestsPath: this.extensionTestsPath,
+        extensionTestsEnv: env,
+      });
+    } catch (e) {
+      // test-electron nominally returns an exit code, but actually rejects the
+      // promise if the test fails. Old versions throw a string, new versions
+      // throw a well-typed error.
+      if (
+        typeof e === 'string' ||
+        (electron.TestRunFailedError && e instanceof electron.TestRunFailedError)
+      ) {
+        return 1;
+      }
+
+      throw e;
+    }
   }
 
   /** @inheritdoc */
@@ -156,7 +170,8 @@ class PreparedDesktopRun implements IPreparedRun {
 
     // todo@connor4312: have a nicer reporter here
     return new Promise<void>((resolve, reject) => {
-      const installer = spawn(cli, cliArgs, { stdio: 'pipe' });
+      const shell = process.platform === 'win32';
+      const installer = spawn(shell ? `"${cli}"` : cli, cliArgs, { stdio: 'pipe', shell });
       let output: string = '';
       installer.stdout.setEncoding('utf-8').on('data', (data) => {
         output += data;
