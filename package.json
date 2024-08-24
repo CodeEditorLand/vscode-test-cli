@@ -1,21 +1,6 @@
 {
-	"bin": {
-		"vscode-test": "./out/bin.mjs"
-	},
-	"dependencies": {
-		"c8": "^9.1.0",
-		"chokidar": "^3.5.3",
-		"enhanced-resolve": "^5.15.0",
-		"glob": "^10.3.10",
-		"minimatch": "^9.0.3",
-		"supports-color": "^9.4.0",
-		"yargs": "^17.7.2"
-	},
+	"name": "@vscode/test-cli",
 	"description": "Command-line runner for VS Code extension tests",
-	"devDependencies": {
-		"@types/node": "^18.18.4",
-		"@types/yargs": "^17.0.28"
-	},
 	"exports": {
 		".": {
 			"import": "./out/index.mjs",
@@ -26,10 +11,25 @@
 		}
 	},
 	"main": "out/index.cjs",
-	"name": "@vscode/test-cli",
+	"bin": {
+		"vscode-test": "./out/bin.mjs"
+	},
 	"scripts": {
 		"build": "npm run clean && tsc",
 		"clean": "node -e \"fs.rmSync('out',{force:true,recursive:true})\"",
 		"prepack": "npm run build"
+	},
+	"dependencies": {
+		"c8": "10.1.2",
+		"chokidar": "3.6.0",
+		"enhanced-resolve": "5.17.1",
+		"glob": "11.0.0",
+		"minimatch": "10.0.1",
+		"supports-color": "9.4.0",
+		"yargs": "17.7.2"
+	},
+	"devDependencies": {
+		"@types/node": "22.4.0",
+		"@types/yargs": "17.0.33"
 	}
 }
