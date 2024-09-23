@@ -3,18 +3,18 @@
 		"vscode-test": "./out/bin.mjs"
 	},
 	"dependencies": {
-		"c8": "^9.1.0",
-		"chokidar": "^3.5.3",
-		"enhanced-resolve": "^5.15.0",
-		"glob": "^10.3.10",
-		"minimatch": "^9.0.3",
-		"supports-color": "^9.4.0",
-		"yargs": "^17.7.2"
+		"c8": "10.1.2",
+		"chokidar": "4.0.1",
+		"enhanced-resolve": "5.17.1",
+		"glob": "11.0.0",
+		"minimatch": "10.0.1",
+		"supports-color": "9.4.0",
+		"yargs": "17.7.2"
 	},
 	"description": "Command-line runner for VS Code extension tests",
 	"devDependencies": {
-		"@types/node": "^18.18.4",
-		"@types/yargs": "^17.0.28"
+		"@types/node": "22.6.0",
+		"@types/yargs": "17.0.33"
 	},
 	"exports": {
 		".": {
