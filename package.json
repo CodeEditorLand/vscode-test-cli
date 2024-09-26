@@ -1,23 +1,6 @@
 {
-	"name": "@vscode/test-cli",
-	"description": "Command-line runner for VS Code extension tests",
-	"exports": {
-		".": {
-			"import": "./out/index.mjs",
-			"require": "./out/index.cjs"
-		},
-		"./fullJsonStream": {
-			"require": "./out/fullJsonStreamReporter.cjs"
-		}
-	},
-	"main": "out/index.cjs",
 	"bin": {
 		"vscode-test": "./out/bin.mjs"
-	},
-	"scripts": {
-		"build": "npm run clean && tsc",
-		"clean": "node -e \"fs.rmSync('out',{force:true,recursive:true})\"",
-		"prepack": "npm run build"
 	},
 	"dependencies": {
 		"c8": "10.1.2",
@@ -28,8 +11,25 @@
 		"supports-color": "9.4.0",
 		"yargs": "17.7.2"
 	},
+	"description": "Command-line runner for VS Code extension tests",
 	"devDependencies": {
 		"@types/node": "22.6.0",
 		"@types/yargs": "17.0.33"
+	},
+	"exports": {
+		".": {
+			"import": "./out/index.mjs",
+			"require": "./out/index.cjs"
+		},
+		"./fullJsonStream": {
+			"require": "./out/fullJsonStreamReporter.cjs"
+		}
+	},
+	"main": "out/index.cjs",
+	"name": "@vscode/test-cli",
+	"scripts": {
+		"build": "npm run clean && tsc",
+		"clean": "node -e \"fs.rmSync('out',{force:true,recursive:true})\"",
+		"prepack": "npm run build"
 	}
 }
