@@ -13,7 +13,7 @@
 	},
 	"description": "Command-line runner for VS Code extension tests",
 	"devDependencies": {
-		"@types/node": "22.8.4",
+		"@types/node": "22.8.6",
 		"@types/yargs": "17.0.33"
 	},
 	"exports": {
