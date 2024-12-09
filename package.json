@@ -26,7 +26,7 @@
 		}
 	},
 	"main": "out/index.cjs",
-	"name": "@vscode/test-cli",
+	"name": "@codeeditorland/test-cli",
 	"scripts": {
 		"build": "npm run clean && tsc",
 		"clean": "node -e \"fs.rmSync('out',{force:true,recursive:true})\"",
